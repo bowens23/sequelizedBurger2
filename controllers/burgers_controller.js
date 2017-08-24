@@ -12,23 +12,25 @@ router.get('/', function (req, res) {
          .then(function (data) { 
              res.render("index", { burger: data });
          }); 
-          return res.redirect("/");
+          //return res.redirect("/");
  }); 
 
 
 
   router.post("/", function(req, res) {
 
+    console.log(req.body.this_doesnot_matter);
     db.burger.create({
-      name: req.body.name
+      burger_name: req.body.burger_name
     })
     return res.redirect("/");
   });
 
 
 router.put("/:id", function(req, res) {
+  console.log (req.body.id)
   db.burger.update({devoured: req.body.devoured}, 
-  {where: {id :req.body.id}})
+  {where: {id : req.body.id}})
     return res.redirect("/");
   })
 

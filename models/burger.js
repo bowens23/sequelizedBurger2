@@ -2,13 +2,22 @@
 'use strict'; 
  module.exports = function (sequelize, DataTypes) { 
      var burger = sequelize.define('burger', { 
-         name: DataTypes.STRING, 
-         devoured: DataTypes.BOOLEAN 
+        id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+            },
+        burger_name: DataTypes.STRING, 
+        devoured: DataTypes.BOOLEAN,
+        time: {type: DataTypes.DATE}
+
      }, { 
-         underscored: true, 
-         classMethods: { 
+        underscored: true, 
+        timestamps: false, 
+        classMethods: { 
              associate: function (models) { 
-             } 
+             },
+
          } 
      }); 
      return burger; 
